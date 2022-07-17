@@ -1,0 +1,233 @@
+﻿Create or replace Function fnu_fibonnaci(p_iNumber integer)
+return integer
+is
+  nuFib  integer;
+  nuP  integer;
+  nuQ  integer;
+Begin
+  if p_iNumber is not null then
+     if p_iNumber=0 then
+        nuFib:=0;
+     Elsif p_iNumber=1 then
+            nuFib:=1;
+     Else
+        nuP:=0;
+        nuQ:=1;
+        For nuI in 2..p_iNumber loop
+            nuFib:=nuP+nuQ;
+            nuP:=nuQ;
+            nuQ:=nuFib;
+        End loop;
+     End if;
+  End if;
+  return(nuFib);
+End fnu_fibonnaci;
+
+
+
+
+
+
+
+
+     PRIME
+
+declare
+n number;
+i number;
+flag number;
+ 
+begin
+i:=2;
+flag:=1;
+n:=&n;
+ 
+for i in 2..n/2
+loop
+if mod(n,i)=0
+then
+flag:=0;
+exit;
+end if;
+end loop;
+ 
+if flag=1
+then
+dbms_output.put_line('prime');
+else
+dbms_output.put_line('not prime');
+end if;
+end;
+/
+
+
+
+ARMSTRONG
+declare
+    n number:=407;
+    s number:=0;
+    r number;
+    len number;
+    m number;
+
+begin
+    m:=n;
+ 
+    len:=length(to_char(n));
+    
+    while n>0
+    loop
+        r:=mod(n,10);
+        s:=s+power(r,len);
+        n:=trunc(n/10);
+    end loop;
+    
+    if m=s
+    then
+        dbms_output.put_line('armstrong number');
+    else
+        dbms_output.put_line('not armstrong number');
+    end if;
+    
+end;
+/
+
+
+
+
+
+
+
+
+STRONG NUMBER
+declare
+ n number(3);
+ fact number(3):=1;
+ rem number(3);
+ m number(3);
+ sum1 number(3):=0;
+ begin
+ dbms_output.put_line('enter a number');
+ n:=&n;
+ m:=n;
+ while(n>0) loop
+ rem:=mod(n,10);
+ for i in 1..rem loop
+ fact:=fact*i;
+ end loop;
+ sum1:=sum1+fact;
+ n:=trunc(n/10);
+ fact:=1;
+ end loop;
+ if(sum1=m) then
+ dbms_output.put_line(m' IS STRONG NUMBER');
+ else
+ dbms_output.put_line('IT IS NOT STRONG NUMBER');
+ end if;
+ end;
+
+* PATTERN
+DECLARE
+  N NUMBER := 7;
+  I NUMBER;
+  J NUMBER;
+BEGIN
+  
+  FOR I IN 1..N
+  LOOP
+    FOR J IN 1..I
+    LOOP
+      DBMS_OUTPUT.PUT('*') ; 
+    END LOOP;
+    DBMS_OUTPUT.NEW_LINE; 
+  END LOOP;
+END;
+
+
+
+
+
+
+
+
+
+
+
+
+REVERSE NUMBER
+Set serveroutput on;
+declare
+  
+    a int;
+    c int;
+    n int;
+   rev int:=0;
+    r int;
+ 
+// Defining function
+function reverse_it( x  IN int)
+return  int
+as
+z int;
+ 
+// function code
+begin
+    n := x;
+         
+    while (n > 0)
+    loop
+        r := mod(n, 10);
+        rev := (rev * 10) + r;
+        n := trunc(n / 10);
+    end loop;
+     
+    z := rev;
+    return z;
+     
+end  ; 
+ 
+BEGIN 
+   a := 123456789;   
+    
+   c := reverse_it(a); 
+   dbms_output.put_line('the reverse of number is  ' || c); 
+ 
+END; 
+
+
+
+FUNCTION FACTORIAL
+DECLARE 
+   num int; 
+   answer int; 
+ 
+// Defining function 
+FUNCTION factorial(x number) 
+RETURN int  
+IS 
+   f int; 
+ 
+BEGIN 
+   IF x = 0 THEN 
+      f := 1; 
+   ELSE 
+      f := x * factorial(x - 1); 
+   END IF; 
+RETURN f; 
+END; 
+   
+BEGIN 
+   num := 5; 
+   answer := factorial(num); 
+   dbms_output.put_line(' Factorial of  '|| num || ' is ' || answer); 
+END; 
+
+
+
+
+
+
+
+
+
+
